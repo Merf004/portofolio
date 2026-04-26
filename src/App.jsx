@@ -20,7 +20,7 @@ export default function App() {
           onClick={() => i18n.changeLanguage(i18n.language === "en" ? "fr" : "en")}
           className="btn-outline"
         >
-          {i18n.language === "en" ? "🇫🇷 Français" : "🇬🇧 English"}
+          {i18n.language === "en" ? "Français" : "English"}
         </button>
       </div>
 
