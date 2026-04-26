@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "about":       "About",
+    "profiles":    "Profiles",
+    "experience":  "Experience",
+    "education":   "Education",
+    "conferences": "Conferences",
+    "skills":      "Skills",
+    "services":    "Services",
+    "projects":    "Projects",
+    "contact":     "Contact"
+  },
+  "hero": {
+    "greeting":    "Hello, I'm",
+    "roles":       ["Data Scientist", "Web Developer", "Trainer", "Researcher"],
+    "cta_primary": "View My Work",
+    "cta_secondary":"Contact Me"
+  },
+  "sections": {
+    "about":       "About Me",
+    "profiles":    "My Profiles",
+    "experience":  "Experience",
+    "education":   "Education",
+    "conferences": "Conferences",
+    "skills":      "Skills",
+    "services":    "Services",
+    "projects":    "Projects",
+    "contact":     "Get In Touch"
+  }
+}

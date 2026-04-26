@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "about":       "À propos",
+    "profiles":    "Profils",
+    "experience":  "Expérience",
+    "education":   "Formation",
+    "conferences": "Conférences",
+    "skills":      "Compétences",
+    "services":    "Services",
+    "projects":    "Projets",
+    "contact":     "Contact"
+  },
+  "hero": {
+    "greeting":    "Bonjour, je suis",
+    "roles":       ["Data Scientist", "Développeur Web", "Formateur", "Chercheur"],
+    "cta_primary": "Voir mes travaux",
+    "cta_secondary":"Me contacter"
+  },
+  "sections": {
+    "about":       "À propos de moi",
+    "profiles":    "Mes profils",
+    "experience":  "Expérience",
+    "education":   "Formation",
+    "conferences": "Conférences",
+    "skills":      "Compétences",
+    "services":    "Services",
+    "projects":    "Projets",
+    "contact":     "Me contacter"
+  }
+}
