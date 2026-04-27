@@ -4,7 +4,7 @@ import { skills } from "../../data/skills";
 import DynamicIcon from "../../utils/iconMap";
 
 function importIcon(filename) {
-  return new URL(`../../assets/skills/${filename}`, import.meta.url).href;
+  return `/assets/skills/${filename}`;
 }
 
 function SkillCard({ name, level, img }) {

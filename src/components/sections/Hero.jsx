@@ -97,39 +97,37 @@ export default function Hero() {
           <div className="flex-1 flex items-center justify-center">
             <div className="relative w-72 h-72 md:w-96 md:h-96">
 
-              {/* Anneau extérieur tournant avec dégradé */}
+              {/* Anneau extérieur tournant */}
               <div
-                className="absolute -inset-3 rounded-full animate-spin [animation-duration:8s]"
+                className="absolute inset-0 rounded-full animate-spin [animation-duration:8s]"
                 style={{
                   background: "conic-gradient(from 0deg, transparent 60%, #0ea5e9 100%)",
-                  borderRadius: "50%",
                 }}
               />
 
-              {/* Anneau blanc qui cache l'intérieur du conic */}
-              <div className="absolute -inset-1.5 rounded-full bg-white dark:bg-gray-950" />
+              {/* Cache l'intérieur du conic extérieur */}
+              <div className="absolute inset-1.5 rounded-full bg-white dark:bg-gray-950" />
 
               {/* Anneau intérieur tournant inverse */}
               <div
-                className="absolute -inset-1 rounded-full animate-spin [animation-duration:6s] [animation-direction:reverse]"
+                className="absolute inset-2 rounded-full animate-spin [animation-duration:6s] [animation-direction:reverse]"
                 style={{
                   background: "conic-gradient(from 180deg, transparent 70%, #8b5cf6 100%)",
-                  borderRadius: "50%",
                 }}
               />
 
-              {/* Fond blanc intérieur */}
-              <div className="absolute inset-0 rounded-full bg-white dark:bg-gray-950" />
+              {/* Cache l'intérieur du conic intérieur */}
+              <div className="absolute inset-3.5 rounded-full bg-white dark:bg-gray-950" />
 
-              {/* Lueur pulsante derrière la photo */}
-              <div className="absolute inset-2 rounded-2xl bg-primary-500/20 blur-xl animate-pulse" />
+              {/* Lueur pulsante */}
+              <div className="absolute inset-4 rounded-full bg-primary-500/20 blur-xl animate-pulse" />
 
-              {/* Cadre de la photo */}
-              <div className="absolute inset-3 rounded-2xl overflow-hidden ring-2 ring-primary-500/40 shadow-2xl shadow-primary-500/20">
+              {/* Photo — pile dans le cercle */}
+              <div className="absolute inset-4 rounded-full overflow-hidden ring-2 ring-primary-500/40 shadow-2xl shadow-primary-500/20">
                 <img
                   src={profile.photos[1]}
                   alt={profile.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
 
                 {/* Overlay shimmer */}
@@ -143,7 +141,7 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Points orbitaux animés */}
+              {/* Points orbitaux */}
               {[0, 72, 144, 216, 288].map((deg, i) => (
                 <div
                   key={deg}
@@ -153,13 +151,14 @@ export default function Hero() {
                     left: "50%",
                     marginTop: "-6px",
                     marginLeft: "-6px",
-                    animation: `orbit 8s linear infinite`,
+                    animation: "orbit 8s linear infinite",
                     animationDelay: `${-i * (8 / 5)}s`,
                     transformOrigin: "6px 6px",
-                    transform: `rotate(${deg}deg) translateX(${window.innerWidth >= 768 ? "196px" : "148px"})`,
+                    transform: `rotate(${deg}deg) translateX(148px)`,
                   }}
                 />
               ))}
+
             </div>
           </div>
         </div>
