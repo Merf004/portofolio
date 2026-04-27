@@ -38,7 +38,7 @@ export const skills = {
     label: { en: "Tools & Others", fr: "Outils & Autres" },
     icon: "Wrench",
     items: [
-      { name: "Git",      level: 80, img: "github.png" },
+      { name: "Git/Github",      level: 80, img: "github.png" },
       { name: "Linux",    level: 75, img: "linux.png" },
       { name: "Jupyter",  level: 90, img: "clipart2501985.png" },
       { name: "VS Code",  level: 90, img: "clipart1143950.png" },

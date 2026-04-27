@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { projects } from "../../data/projects";
-import { ChevronLeft, ChevronRight, GitBranch } from "lucide-react";
+import { ChevronLeft, ChevronRight, GitBranch, Maximize2 } from "lucide-react";
+import Modal from "../ui/Modal";
 
-function ImageCarousel({ images, title }) {
+function ImageCarousel({ images, title, onExpand }) {
   const [current, setCurrent] = useState(0);
 
   if (!images || images.length === 0) {
@@ -18,7 +19,7 @@ function ImageCarousel({ images, title }) {
   const next = () => setCurrent((i) => (i + 1) % images.length);
 
   return (
-    <div className="relative w-full h-48 rounded-xl overflow-hidden group">
+    <div className="relative w-full h-48 rounded-xl overflow-hidden group cursor-pointer" onClick={onExpand}>
       {images.map((src, i) => (
         <img
           key={i}
@@ -30,17 +31,35 @@ function ImageCarousel({ images, title }) {
         />
       ))}
 
+      {/* Bouton agrandir */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onExpand();
+        }}
+        className="absolute top-2 right-2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60"
+        title="Agrandir"
+      >
+        <Maximize2 size={18} />
+      </button>
+
       {/* Contrôles carousel */}
       {images.length > 1 && (
         <>
           <button
-            onClick={prev}
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
             className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60"
           >
             <ChevronLeft size={14} />
           </button>
           <button
-            onClick={next}
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
             className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60"
           >
             <ChevronRight size={14} />
@@ -51,7 +70,10 @@ function ImageCarousel({ images, title }) {
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setCurrent(i)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrent(i);
+                }}
                 className={`w-1.5 h-1.5 rounded-full transition-all ${
                   i === current
                     ? "bg-white w-3"
@@ -71,6 +93,8 @@ export default function Projects() {
   const lang = i18n.language;
 
   const [activeFilter, setActiveFilter] = useState("all");
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [expandedImageIndex, setExpandedImageIndex] = useState(0);
 
   const filters = [
     { id: "all", label: { en: "All", fr: "Tous" } },
@@ -114,7 +138,14 @@ export default function Projects() {
           >
             {/* Carousel images */}
             <div className="p-4 pb-0">
-              <ImageCarousel images={project.images} title={project.title} />
+              <ImageCarousel 
+                images={project.images} 
+                title={project.title}
+                onExpand={() => {
+                  setSelectedProject(project);
+                  setExpandedImageIndex(0);
+                }}
+              />
             </div>
 
             {/* Contenu */}
@@ -162,6 +193,106 @@ export default function Projects() {
           </div>
         ))}
       </div>
+
+      {/* Modal projet aggrandi */}
+      <Modal 
+        isOpen={selectedProject !== null} 
+        onClose={() => setSelectedProject(null)}
+      >
+        {selectedProject && (
+          <div className="space-y-6">
+            {/* Images agrandies */}
+            <div>
+              <div className="relative w-full h-96 rounded-xl overflow-hidden group mb-4">
+                {selectedProject.images.map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt={`${selectedProject.title} ${i + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${
+                      i === expandedImageIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                    }`}
+                  />
+                ))}
+
+                {/* Contrôles */}
+                {selectedProject.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={() => setExpandedImageIndex((i) => (i - 1 + selectedProject.images.length) % selectedProject.images.length)}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60"
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
+                    <button
+                      onClick={() => setExpandedImageIndex((i) => (i + 1) % selectedProject.images.length)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60"
+                    >
+                      <ChevronRight size={20} />
+                    </button>
+
+                    {/* Indicateurs */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                      {selectedProject.images.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setExpandedImageIndex(i)}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            i === expandedImageIndex
+                              ? "bg-white w-4"
+                              : "bg-white/50"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* Contenu projet */}
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                {selectedProject.title}
+              </h2>
+              {selectedProject.featured && (
+                <span className="inline-block text-xs px-3 py-1 rounded-full bg-primary-500/10 text-primary-500 font-medium mb-4">
+                  {lang === "fr" ? "Vedette" : "Featured"}
+                </span>
+              )}
+
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                {selectedProject.description[lang]}
+              </p>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedProject.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Lien GitHub */}
+              {selectedProject.github && (
+                <a
+                  href={selectedProject.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-500 text-white hover:bg-primary-600 transition-colors font-medium"
+                >
+                  <GitBranch size={18} />
+                  Voir sur GitHub
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+      </Modal>
     </section>
   );
 }

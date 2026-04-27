@@ -3,6 +3,8 @@ import { profile } from "../../data/profile";
 import githubIcon from "../../assets/icons/github.png";
 import linkedinIcon from "../../assets/icons/linkedin.png";
 import twitterIcon from "../../assets/icons/twitter.png";
+import facebookIcon from "../../assets/icons/facebook.png";
+import whatsappIcon from "../../assets/icons/whatsapp.png";
 
 export default function Footer() {
   const { i18n } = useTranslation();
@@ -13,6 +15,8 @@ export default function Footer() {
     { icon: githubIcon,   href: profile.socials.github,   label: "GitHub" },
     { icon: linkedinIcon, href: profile.socials.linkedin, label: "LinkedIn" },
     { icon: twitterIcon,  href: profile.socials.twitter,   label: "Twitter/X" },
+    { icon: facebookIcon, href: "https://www.facebook.com/share/14ikMxXkHqz/?mibextid=wwXIfr", label: "Facebook" },
+    { icon: whatsappIcon, href: "https://wa.me/237698932184", label: "WhatsApp" },
   ];
 
   return (
