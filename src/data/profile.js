@@ -1,5 +1,9 @@
+import photo1 from '../assets/images/photo1.jpg';
+import photo2 from '../assets/images/photo2.jpg';
+import photo3 from '../assets/images/photo3.jpg';
+
 export const profile = {
-  name: "FEDIM PIOMO MERLN BRICE",
+  name: "FEDIM PIOMO MERLIN BRICE",
   title: {
     en: "Data Scientist & Web Developer",
     fr: "Data Scientist & Développeur Web",
@@ -25,4 +29,9 @@ export const profile = {
     en: "/assets/CV_MerF_en.pdf",
     fr: "/assets/CV_MerF_fr.pdf",
   },
+  photos: [
+  photo1,
+  photo2,
+  photo3,
+],
 };

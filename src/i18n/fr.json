@@ -12,7 +12,7 @@
   },
   "hero": {
     "greeting":    "Bonjour, je suis",
-    "roles":       ["Data Scientist", "Développeur Web", "Formateur", "Chercheur"],
+    "roles":       ["Data Scientist", "Développeur Web FullStack", "Formateur en informatique"],
     "cta_primary": "Voir mes travaux",
     "cta_secondary":"Me contacter"
   },

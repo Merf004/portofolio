@@ -32,15 +32,4 @@ export const profiles = [
     },
     tags: ["Pedagogy", "Data Science", "Python", "Excel"],
   },
-  {
-    id: "researcher",
-    icon: "FlaskConical",
-    color: "from-indigo-500 to-purple-500",
-    title: { en: "Researcher", fr: "Chercheur" },
-    description: {
-      en: "I conduct research at the intersection of AI and real-world problems.",
-      fr: "Je mène des recherches à l'intersection de l'IA et des problèmes du monde réel.",
-    },
-    tags: ["NLP", "Computer Vision", "Academic Writing"],
-  },
 ];

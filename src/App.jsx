@@ -1,32 +1,35 @@
-import { useTheme } from "./theme/ThemeContext";
-import { useTranslation } from "react-i18next";
+import { BrowserRouter } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import ScrollProgress from "./components/common/ScrollProgress";
+import BackToTop from "./components/common/BackToTop";
+import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Profiles from "./components/sections/Profiles";
+import Experience from "./components/sections/Experience";
+import Education from "./components/sections/Education";
+import Conferences from "./components/sections/Conferences";
+import Skills from "./components/sections/Skills";
+import Services from "./components/sections/Services";
+import Projects from "./components/sections/Projects";
+import Contact from "./components/sections/Contact";
 
 export default function App() {
-  const { theme, toggleTheme } = useTheme();
-  const { i18n } = useTranslation();
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-6">
-      <h1 className="text-4xl font-bold section-title">
-        Portfolio — Config OK
-      </h1>
-
-      <div className="flex gap-4">
-        <button onClick={toggleTheme} className="btn-primary">
-          {theme === "dark" ? "Light" : "Dark"}
-        </button>
-
-        <button
-          onClick={() => i18n.changeLanguage(i18n.language === "en" ? "fr" : "en")}
-          className="btn-outline"
-        >
-          {i18n.language === "en" ? "Français" : "English"}
-        </button>
-      </div>
-
-      <p className="text-gray-500 dark:text-gray-400">
-        Thème actif : <strong>{theme}</strong> | Langue : <strong>{i18n.language}</strong>
-      </p>
-    </div>
+    <BrowserRouter>
+      <ScrollProgress />
+      <Layout>
+        <Hero />
+        <About />
+        <Profiles />
+        <Experience />
+        <Education />
+        <Conferences />
+        <Skills />
+        <Services />
+        <Projects />
+        <Contact />
+      </Layout>
+      <BackToTop />
+    </BrowserRouter>
   );
 }
