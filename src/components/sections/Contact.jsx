@@ -6,7 +6,7 @@ import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.resolvedLanguage?.startsWith("fr") ? "fr" : "en";
 
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);

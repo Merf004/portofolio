@@ -4,7 +4,7 @@ import DynamicIcon from "../../utils/iconMap";
 
 export default function Profiles() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.resolvedLanguage?.startsWith("fr") ? "fr" : "en";
 
   return (
     <section id="profiles" className="section-container">

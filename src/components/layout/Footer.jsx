@@ -8,7 +8,7 @@ import whatsappIcon from "../../assets/icons/whatsapp.png";
 
 export default function Footer() {
   const { i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.resolvedLanguage?.startsWith("fr") ? "fr" : "en";
   const year = new Date().getFullYear();
 
   const socials = [

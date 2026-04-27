@@ -14,7 +14,7 @@ function formatDate(dateStr, lang) {
 
 export default function Education() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.resolvedLanguage?.startsWith("fr") ? "fr" : "en";
 
   return (
     <section id="education" className="section-container">

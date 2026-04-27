@@ -59,7 +59,7 @@ function SkillCard({ name, level, img }) {
 
 export default function Skills() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.resolvedLanguage?.startsWith("fr") ? "fr" : "en";
   const categories = Object.values(skills);
   const [activeTab, setActiveTab] = useState(0);
   const [paused, setPaused] = useState(false);

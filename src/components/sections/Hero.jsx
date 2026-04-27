@@ -5,9 +5,9 @@ import { profile } from "../../data/profile";
 
 export default function Hero() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
-
-  const roles = t("hero.roles", { returnObjects: true });
+  const lang = i18n.resolvedLanguage?.startsWith("fr") ? "fr" : "en";
+  const rolesFromI18n = t("hero.roles", { returnObjects: true });
+  const roles = Array.isArray(rolesFromI18n) ? rolesFromI18n : [String(rolesFromI18n)];
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [deleting, setDeleting] = useState(false);

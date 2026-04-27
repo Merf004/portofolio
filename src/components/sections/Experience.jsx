@@ -14,7 +14,7 @@ function formatDate(dateStr, lang) {
 
 export default function Experience() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.language?.startsWith("fr") ? "fr" : "en";
 
   return (
     <section id="experience" className="section-container">
@@ -28,7 +28,12 @@ export default function Experience() {
         <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-800 -translate-x-1/2" />
 
         <div className="space-y-10">
-          {experiences.map((exp, index) => (
+          {experiences.map((exp, index) => {
+            const roleText = exp.role?.[lang] ?? exp.role?.en ?? "";
+            const descriptionItems = exp.description?.[lang] ?? exp.description?.en ?? [];
+            const tags = Array.isArray(exp.tags) ? exp.tags : [];
+
+            return (
             <div
               key={exp.id}
               className={`relative flex flex-col md:flex-row gap-6 md:gap-0 ${
@@ -50,7 +55,7 @@ export default function Experience() {
                 <div className="flex items-start justify-between gap-4 mb-3">
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">
-                      {exp.role[lang]}
+                      {roleText}
                     </h3>
                     <p className="text-primary-500 text-sm font-medium mt-0.5">
                       {exp.company}
@@ -77,7 +82,7 @@ export default function Experience() {
 
                 {/* Description */}
                 <ul className="space-y-1.5 mb-4">
-                  {exp.description[lang].map((item, i) => (
+                  {descriptionItems.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
                       {item}
@@ -87,7 +92,7 @@ export default function Experience() {
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1.5">
-                  {exp.tags.map((tag) => (
+                  {tags.map((tag) => (
                     <span
                       key={tag}
                       className="text-xs px-2 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
@@ -108,7 +113,8 @@ export default function Experience() {
               </div>
 
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

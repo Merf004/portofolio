@@ -13,6 +13,10 @@ i18n
       en: { translation: en },
       fr: { translation: fr },
     },
+    supportedLngs: ["en", "fr"],
+    nonExplicitSupportedLngs: true,
+    load: "languageOnly",
+    cleanCode: true,
     fallbackLng: "en", // 🇬🇧 anglais par défaut
     interpolation: { escapeValue: false },
     detection: {

@@ -90,7 +90,7 @@ function ImageCarousel({ images, title, onExpand }) {
 
 export default function Projects() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.language?.startsWith("fr") ? "fr" : "en";
 
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
@@ -162,12 +162,12 @@ export default function Projects() {
               </div>
 
               <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
-                {project.description[lang]}
+                {project.description?.[lang] ?? project.description?.en ?? ""}
               </p>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-1.5 mb-4">
-                {project.tags.map((tag) => (
+                {(project.tags ?? []).map((tag) => (
                   <span
                     key={tag}
                     className="text-xs px-2 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
@@ -201,10 +201,16 @@ export default function Projects() {
       >
         {selectedProject && (
           <div className="space-y-6">
+            {/** Ensure modal carousel never crashes on incomplete project data */}
+            {(() => {
+              const modalImages = selectedProject.images ?? [];
+              const modalImageCount = modalImages.length;
+              return (
+                <>
             {/* Images agrandies */}
             <div>
               <div className="relative w-full h-96 rounded-xl overflow-hidden group mb-4">
-                {selectedProject.images.map((src, i) => (
+                {modalImages.map((src, i) => (
                   <img
                     key={i}
                     src={src}
@@ -216,16 +222,16 @@ export default function Projects() {
                 ))}
 
                 {/* Contrôles */}
-                {selectedProject.images.length > 1 && (
+                {modalImageCount > 1 && (
                   <>
                     <button
-                      onClick={() => setExpandedImageIndex((i) => (i - 1 + selectedProject.images.length) % selectedProject.images.length)}
+                      onClick={() => setExpandedImageIndex((i) => (i - 1 + modalImageCount) % modalImageCount)}
                       className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60"
                     >
                       <ChevronLeft size={20} />
                     </button>
                     <button
-                      onClick={() => setExpandedImageIndex((i) => (i + 1) % selectedProject.images.length)}
+                      onClick={() => setExpandedImageIndex((i) => (i + 1) % modalImageCount)}
                       className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60"
                     >
                       <ChevronRight size={20} />
@@ -233,7 +239,7 @@ export default function Projects() {
 
                     {/* Indicateurs */}
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                      {selectedProject.images.map((_, i) => (
+                      {modalImages.map((_, i) => (
                         <button
                           key={i}
                           onClick={() => setExpandedImageIndex(i)}
@@ -249,6 +255,9 @@ export default function Projects() {
                 )}
               </div>
             </div>
+                </>
+              );
+            })()}
 
             {/* Contenu projet */}
             <div>
@@ -262,12 +271,12 @@ export default function Projects() {
               )}
 
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                {selectedProject.description[lang]}
+                {selectedProject.description?.[lang] ?? selectedProject.description?.en ?? ""}
               </p>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-6">
-                {selectedProject.tags.map((tag) => (
+                {(selectedProject.tags ?? []).map((tag) => (
                   <span
                     key={tag}
                     className="px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm font-medium"

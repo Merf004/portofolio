@@ -112,7 +112,7 @@ function PhotoModal({ photos, title, onClose }) {
 
 export default function Conferences() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.resolvedLanguage?.startsWith("fr") ? "fr" : "en";
   const [modalConf, setModalConf] = useState(null);
 
   return (

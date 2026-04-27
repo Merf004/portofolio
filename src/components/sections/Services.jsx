@@ -5,6 +5,11 @@ import DynamicIcon from "../../utils/iconMap";
 import { X, CheckCircle2 } from "lucide-react";
 
 function ServiceModal({ service, lang, onClose }) {
+  const titleText = service.title?.[lang] ?? service.title?.en ?? "";
+  const descriptionText =
+    service.description?.[lang] ?? service.description?.en ?? "";
+  const detailsItems = service.details?.[lang] ?? service.details?.en ?? [];
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
@@ -30,7 +35,7 @@ function ServiceModal({ service, lang, onClose }) {
                   {lang === "fr" ? "Service" : "Service"}
                 </p>
                 <h3 className="text-white text-xl font-bold leading-tight">
-                  {service.title[lang]}
+                  {titleText}
                 </h3>
               </div>
             </div>
@@ -47,7 +52,7 @@ function ServiceModal({ service, lang, onClose }) {
         <div className="px-8 py-6">
           {/* Description */}
           <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6 pb-6 border-b border-gray-100 dark:border-gray-800">
-            {service.description[lang]}
+            {descriptionText}
           </p>
 
           {/* Liste des détails */}
@@ -56,7 +61,7 @@ function ServiceModal({ service, lang, onClose }) {
           </p>
 
           <ul className="space-y-3">
-            {service.details[lang].map((item, i) => (
+            {detailsItems.map((item, i) => (
               <li
                 key={i}
                 className="flex items-start gap-3"
@@ -111,7 +116,7 @@ function ServiceModal({ service, lang, onClose }) {
 
 export default function Services() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const lang = i18n.language?.startsWith("fr") ? "fr" : "en";
   const [hovered, setHovered] = useState(null);
   const [modalService, setModalService] = useState(null);
 
@@ -125,6 +130,9 @@ export default function Services() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {services.map((service, index) => {
           const isHovered = hovered === service.id;
+          const titleText = service.title?.[lang] ?? service.title?.en ?? "";
+          const descriptionText =
+            service.description?.[lang] ?? service.description?.en ?? "";
 
           return (
             <div
@@ -183,7 +191,7 @@ export default function Services() {
 
                 {/* Titre */}
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-primary-500">
-                  {service.title[lang]}
+                  {titleText}
                 </h3>
 
                 {/* Séparateur */}
@@ -197,7 +205,7 @@ export default function Services() {
 
                 {/* Description */}
                 <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                  {service.description[lang]}
+                  {descriptionText}
                 </p>
 
                 {/* Bouton Learn more */}
