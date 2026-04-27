@@ -5,7 +5,7 @@ import { Sun, Moon, Menu, X, Globe } from "lucide-react";
 import logo from "../../assets/icons/icon.png";
 
 const NAV_ITEMS = [
-  "about", "profiles", "experience", "education",
+  "experience", "education",
   "conferences", "skills", "services", "projects", "contact"
 ];
 

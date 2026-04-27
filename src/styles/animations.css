@@ -1,0 +1,14 @@
+@keyframes orbit {
+  from { transform: rotate(var(--start-deg, 0deg)) translateX(148px); }
+  to   { transform: rotate(calc(var(--start-deg, 0deg) + 360deg)) translateX(148px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50%       { transform: translateX(-50%) translateY(-6px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
+}

@@ -13,12 +13,10 @@
   "hero": {
     "greeting":    "Bonjour, je suis",
     "roles":       ["Data Scientist", "Développeur Web FullStack", "Formateur en informatique"],
-    "cta_primary": "Voir mes travaux",
+    "cta_primary": "Télécharger mon CV",
     "cta_secondary":"Me contacter"
   },
   "sections": {
-    "about":       "À propos de moi",
-    "profiles":    "Mes profils",
     "experience":  "Expérience",
     "education":   "Formation",
     "conferences": "Conférences",

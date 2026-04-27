@@ -14,6 +14,11 @@ export const conferences = [
       fr: "Le machine learning pour le bien dans les pays en développement.",
     },
     link: "https://indabaxcameroon.vercel.app/", // optionnel
+      photos: [
+    "/src/assets/images/conf1-photo1.jpg",
+    "/src/assets/images/conf1-photo2.jpg",
+    "/src/assets/images/conf1-photo3.jpg",
+  ],
   },
 
   {
@@ -31,6 +36,10 @@ export const conferences = [
       fr: "DevFest Yaoundé est le plus grand événement du Google Developer Group qui se déroule dans la ville de Yaoundé, au Cameroun, où nous accueillons des centaines de développeurs lors d'un événement d'une journée axé sur l'apprentissage technique, la passion partagée pour les produits Google et le réseautage avec des esprits similaires.",
     },
     link: "https://gdg.community.dev/events/details/google-gdg-yaounde-presents-devfest-yaounde-2024/", // optionnel
+      photos: [
+    "/src/assets/images/conf2-photo1.jpg",
+    "/src/assets/images/conf2-photo2.jpg",
+  ],
   },
 
   {
@@ -48,14 +57,20 @@ export const conferences = [
       fr: "L'École Thématique Internationale de l'Intelligence Artificielle au Cameroun (ETIIAC) est une initiative de formation d'excellence axée sur le développement de l'IA, née d'un partenariat entre Polytech Dijon (Université de Bourgogne, France) et l'Institut Universitaire de la Côte (IUC) au Cameroun. ",
     },
     link: "https://etiiac.com/", // optionnel
+      photos: [
+    "/src/assets/images/conf3-photo1.jpg",
+    "/src/assets/images/conf3-photo2.jpg",
+    "/src/assets/images/conf3-photo3.jpg",
+    "/src/assets/images/conf3-photo4.jpg",
+  ],
   },
 
   {
     id: 4,
     title: "CONFERENCE DE RECHERCHE EN INFORMATIQUE CRI'2025",
     role: {
-      en: "Speaker",      // Speaker, Attendee, Organizer
-      fr: "Intervenant",
+      en: "Attendee",      // Speaker, Attendee, Organizer
+      fr: "Participant",
     },
     event: "CONFERENCE DE RECHERCHE EN INFORMATIQUE CRI'2025",
     location: "Yaoundé, Cameroun",
@@ -65,5 +80,10 @@ export const conferences = [
       fr: "La septième édition de la Conférence sur la recherche en informatique – CRI’2025",
     },
     link: "http://cri-info.cm/", // optionnel
+      photos: [
+    "/src/assets/images/conf4-photo1.jpg",
+    "/src/assets/images/conf4-photo2.jpg",
+    "/src/assets/images/conf4-photo3.jpg",
+  ],
   },
 ];

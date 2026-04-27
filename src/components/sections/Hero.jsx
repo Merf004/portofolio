@@ -97,34 +97,69 @@ export default function Hero() {
           <div className="flex-1 flex items-center justify-center">
             <div className="relative w-72 h-72 md:w-96 md:h-96">
 
-              {/* Cercle décoratif tournant */}
-              <div className="absolute inset-0 rounded-full border border-dashed border-primary-500/30 animate-spin [animation-duration:20s]" />
-              <div className="absolute inset-4 rounded-full border border-dashed border-primary-500/15 animate-spin [animation-duration:15s] [animation-direction:reverse]" />
+              {/* Anneau extérieur tournant avec dégradé */}
+              <div
+                className="absolute -inset-3 rounded-full animate-spin [animation-duration:8s]"
+                style={{
+                  background: "conic-gradient(from 0deg, transparent 60%, #0ea5e9 100%)",
+                  borderRadius: "50%",
+                }}
+              />
 
-              {/* Points décoratifs sur le cercle */}
-              {[0, 60, 120, 180, 240, 300].map((deg) => (
-                <div
-                  key={deg}
-                  className="absolute w-2 h-2 rounded-full bg-primary-500/40"
-                  style={{
-                    top: "50%",
-                    left: "50%",
-                    transform: `rotate(${deg}deg) translate(140px) rotate(-${deg}deg)`,
-                    marginTop: "-4px",
-                    marginLeft: "-4px",
-                  }}
-                />
-              ))}
+              {/* Anneau blanc qui cache l'intérieur du conic */}
+              <div className="absolute -inset-1.5 rounded-full bg-white dark:bg-gray-950" />
 
-              {/* Photo principale */}
-              <div className="absolute inset-8 rounded-2xl overflow-hidden shadow-2xl ring-2 ring-primary-500/20">
+              {/* Anneau intérieur tournant inverse */}
+              <div
+                className="absolute -inset-1 rounded-full animate-spin [animation-duration:6s] [animation-direction:reverse]"
+                style={{
+                  background: "conic-gradient(from 180deg, transparent 70%, #8b5cf6 100%)",
+                  borderRadius: "50%",
+                }}
+              />
+
+              {/* Fond blanc intérieur */}
+              <div className="absolute inset-0 rounded-full bg-white dark:bg-gray-950" />
+
+              {/* Lueur pulsante derrière la photo */}
+              <div className="absolute inset-2 rounded-2xl bg-primary-500/20 blur-xl animate-pulse" />
+
+              {/* Cadre de la photo */}
+              <div className="absolute inset-3 rounded-2xl overflow-hidden ring-2 ring-primary-500/40 shadow-2xl shadow-primary-500/20">
                 <img
                   src={profile.photos[1]}
                   alt={profile.name}
                   className="w-full h-full object-cover"
                 />
+
+                {/* Overlay shimmer */}
+                <div
+                  className="absolute inset-0 opacity-20"
+                  style={{
+                    background: "linear-gradient(135deg, transparent 40%, #0ea5e9 50%, transparent 60%)",
+                    backgroundSize: "200% 200%",
+                    animation: "shimmer 3s ease-in-out infinite",
+                  }}
+                />
               </div>
 
+              {/* Points orbitaux animés */}
+              {[0, 72, 144, 216, 288].map((deg, i) => (
+                <div
+                  key={deg}
+                  className="absolute w-3 h-3 rounded-full bg-primary-500 shadow-lg shadow-primary-500/50"
+                  style={{
+                    top: "50%",
+                    left: "50%",
+                    marginTop: "-6px",
+                    marginLeft: "-6px",
+                    animation: `orbit 8s linear infinite`,
+                    animationDelay: `${-i * (8 / 5)}s`,
+                    transformOrigin: "6px 6px",
+                    transform: `rotate(${deg}deg) translateX(${window.innerWidth >= 768 ? "196px" : "148px"})`,
+                  }}
+                />
+              ))}
             </div>
           </div>
         </div>

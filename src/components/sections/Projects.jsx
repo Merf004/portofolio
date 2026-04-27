@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { projects } from "../../data/projects";
-import { profiles } from "../../data/profiles";
-import { GitBranch, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, GitBranch } from "lucide-react";
 
 function ImageCarousel({ images, title }) {
   const [current, setCurrent] = useState(0);
@@ -75,7 +74,6 @@ export default function Projects() {
 
   const filters = [
     { id: "all", label: { en: "All", fr: "Tous" } },
-    ...profiles.map((p) => ({ id: p.id, label: p.title })),
   ];
 
   const filtered =

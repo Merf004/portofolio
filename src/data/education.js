@@ -10,8 +10,8 @@ export const education = [
     startDate: "2024-09",
     endDate: "2026-06",
     description: {
-      en: "Specialized in machine learning, statistical modeling and big data.",
-      fr: "Spécialisé en machine learning, modélisation statistique et big data.",
+      en: "Specialized in Modeling & Analysis, Machine & Deep Learning, Big Data Processing, Advanced Programming, Algorithmics and Software Engineering.",
+      fr: "Spécialisé en  Modélisation et Analyse, machine & deep Learning, Traitement de données massives, Programmation avancée, Algorithmique et Génie Logiciel.",
     },
     honors: {
       en: "With honors",
@@ -30,12 +30,12 @@ export const education = [
     startDate: "2021-10",
     endDate: "2024-07",
     description: {
-      en: "Specialized in machine learning, statistical modeling and big data.",
-      fr: "Spécialisé en machine learning, modélisation statistique et big data.",
+      en: "Specialized in Software Engineering, Web & Mobile Development, Proficiency in Core Languages, Databases and Operating Systems.",
+      fr: "Spécialisé en Génie logiciel, Développement Web et Mobile, Maîtrise des langages de base,Bases de données et Systèmes d'exploitation",
     },
     honors: {
-      en: "With honors",
-      fr: "Avec mention",
+      en: " Passable",
+      fr: "Passable",
     },
   },
 
@@ -43,15 +43,15 @@ export const education = [
     id: 3,
     degree: {
       en: "High School Diploma",
-      fr: "Baccalauréat",
+      fr: "Baccalauréat C",
     },
     school: "Lycée Bilingue de Bokito",
     location: "Bokito, Cameroun",
     startDate: "2016-09",
     endDate: "2021-07",
     description: {
-      en: "Specialized in Mathematics, Physics and Chemistry.",
-      fr: "Spécialisé en Mathématiques, Physique et Chimie.",
+      en: "Specialized in Mathematics (Analysis and Algebra, Spatial Geometry, Probability and Statistics), Physical Sciences and Modeling.",
+      fr: "Spécialisé en Mathématiques(Analyse et Algèbre, Géométrie Spatiale, Probabilités et Statistiques), Sciences Physiques et Modélisation.",
     },
     honors: {
       en: "With honors",

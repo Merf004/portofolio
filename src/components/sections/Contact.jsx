@@ -24,9 +24,21 @@ export default function Contact() {
   };
 
   const infos = [
-    { icon: Mail,   label: profile.email },
-    { icon: Phone,  label: profile.phone },
-    { icon: MapPin, label: profile.location[lang] },
+    {
+      icon: Mail,
+      label: profile.email,
+      href: `mailto:${profile.email}`,
+    },
+    {
+      icon: Phone,
+      label: profile.phone,
+      href: `tel:${profile.phone.replace(/\s/g, "")}`,
+    },
+    {
+      icon: MapPin,
+      label: profile.location[lang],
+      href: null,
+    },
   ];
 
   const labels = {
@@ -60,12 +72,23 @@ export default function Contact() {
           </p>
 
           <div className="space-y-4">
-            {infos.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center shrink-0">
-                  <Icon size={18} className="text-primary-500" />
+            {infos.map(({ icon: Icon, label, href }) => (
+              <div key={label} className="flex items-center gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center shrink-0 group-hover:bg-primary-500 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary-500/30">
+                  <Icon size={18} className="text-primary-500 group-hover:text-white transition-colors duration-300" />
                 </div>
-                <span className="text-gray-700 dark:text-gray-300 text-sm">{label}</span>
+                {href ? (
+                  <a
+                    href={href}
+                    className="text-gray-700 dark:text-gray-300 text-sm hover:text-primary-500 transition-colors duration-300 group-hover:translate-x-1 transform inline-block"
+                  >
+                    {label}
+                  </a>
+                ) : (
+                  <span className="text-gray-700 dark:text-gray-300 text-sm group-hover:translate-x-1 transform transition-transform duration-300 inline-block">
+                    {label}
+                  </span>
+                )}
               </div>
             ))}
           </div>
