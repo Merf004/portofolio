@@ -22,8 +22,8 @@ export const education = [
   {
     id: 2,
     degree: {
-      en: "Bachelor's Degree in Data Science",
-      fr: "Licence en Data Science",
+      en: "Bachelor's Degree in Computer Science",
+      fr: "Licence en Informatique",
     },
     school: "Université de Yaoundé I",
     location: "Yaoundé, Cameroun",

@@ -56,13 +56,13 @@ export const experiences = [
     company: "Ecole Nationale Supérieure des Travaux Publics de Yaoundé (ENSTPY)",
     location: "Yaoundé, Cameroun",
     startDate: "2024-10",
-    endDate: "205-01",
+    endDate: "2025-01",
     current: false,
     description: {
       en: [
         "Instructor for the course “Python for Data Analysis and Statistical Exploration” organized by the GIT Club (Génie Innovent et Technologie) at the École Nationale Supérieure des Travaux Publics de Yaoundé (ENSTP).",
         "Facilitation of interactive training sessions on Google Meet. Preparation of lessons in accordance with the curriculum and learning objectives.",
-        ". Design of practical exercises enabling learners to apply their new knowledge in real-world scenarios."
+        "Design of practical exercises enabling learners to apply their new knowledge in real-world scenarios."
       ],
       fr: [
         "Formateur pour le cours “Python pour l’analyse de données et l’exploration statistique” organisé par le club GIT (Génie Innovent et Technologie) à l'École Nationale Supérieure des Travaux Publiques de Yaoundé (ENSTP).",
