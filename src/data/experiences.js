@@ -21,8 +21,36 @@ export const experiences = [
     tags: ["Python", "JavaScript", "HTML/CSS", "Flask"],
   },
 
-  {
+    {
     id: 2,
+    role: {
+      en: "Instructor",
+      fr: "Formateur",
+    },
+    company: " CLM Academy",
+    location: "Yaoundé, Cameroun",
+    startDate: "2026-05",
+    endDate: null, // null = poste actuel
+    current: true,
+    description: {
+      en: [
+        "Instructor for the office software component of the office administration course",
+        "Conducting training sessions",
+        "Preparing lessons in accordance with the curriculum and learning objectives",
+        "Designing practical exercises that allow learners to apply their new knowledge in realworld situations",
+      ],
+      fr: [
+        "Formateur sur la partie bureautique du cours de secrétariat bureautique",
+        "Animation de sessions de formation",
+        "Préparation des cours en suivant le programme et les objectifs d'apprentissage",
+        "Conception d'exercices pratiques permettant aux apprenants d'appliquer concrètement leurs nouvelles connaissances.",
+      ],
+    },
+    tags: ["MS Word", "MS Excel", "MS PowerPoint", "MS Publisher"],
+  },
+
+  {
+    id: 3,
     role: {
       en: "AI Developer & Trainer",
       fr: "Développeur & Formateur IA ",
@@ -48,7 +76,7 @@ export const experiences = [
   },  
 
   {
-    id: 3,
+    id: 4,
     role: {
       en: "Instructor at the GIT Club (Génie Innovent et Technologies) de l'ENSTPY ",
       fr: "Formateur au Club GIT (Génie Innovent et Technologies) de l'ENSTPY",
@@ -74,7 +102,7 @@ export const experiences = [
   },
   
   {
-    id: 4,
+    id: 5,
     role: {
       en: "Data Scientist / Web Developer",
       fr: "Data scientist / Développeur web ",
@@ -96,7 +124,7 @@ export const experiences = [
   },
   
   {
-    id: 5,
+    id: 6,
     role: {
       en: "Data Scientist / Web Developer",
       fr: "Data scientist / Développeur web ",
